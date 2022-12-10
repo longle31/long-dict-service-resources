@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "64b19e25-b74b-47c8-b99a-38211be0602d",
+		"name": "LONG-DICT-SERVICE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17754370"
+	},
+	"item": [
+		{
+			"name": "MANUALLY CALL",
+			"item": [
+				{
+					"name": "GET WORD - WEB DICTIONARY SCRAPER",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(`get vocabulary should return 200 and has proper values`, function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.expect(pm.environment.get(\"word\")).to.equal(pm.response.json.word);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "dictionary",
+								"value": "{{dictionary}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/vocabulary/{{word}}",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"vocabulary",
+								"{{word}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET WORD - LONG DICTIONARY SERVICE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(`get vocabulary should return 200 and has proper values`, function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.expect(pm.environment.get(\"word\")).to.equal(pm.response.json.word);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "dictionary",
+								"value": "{{dictionary}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8082/api/vocabulary/{{word}}",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"vocabulary",
+								"{{word}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AUTOMATION",
+			"item": [
+				{
+					"name": "DATA SCRAPING",
+					"item": [
+						{
+							"name": "DATA SCRAPING GOOD INPUT",
+							"item": [
+								{
+									"name": "GET WORD - WEB DICTIONARY SCRAPER - GOOD INPUT",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(`get vocabulary should return 200 and has proper values`, function(){\r",
+													"    pm.response.to.have.status(200);\r",
+													"    pm.expect(pm.environment.get(\"word\")).to.equal(pm.response.json.word);\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "dictionary",
+												"value": "{{dictionary}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:5000/vocabulary/{{word}}",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "5000",
+											"path": [
+												"vocabulary",
+												"{{word}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "DATA SCRAPING BAD INPUT",
+							"item": [
+								{
+									"name": "GET WORD - WEB DICTIONARY SCRAPER - BAD INPUT",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(`get non-vocabulary should return 404`, function(){\r",
+													"    pm.response.to.have.status(404);\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "dictionary",
+												"value": "{{dictionary}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:5000/vocabulary/{{word}}",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "5000",
+											"path": [
+												"vocabulary",
+												"{{word}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "VOCABULARY WAREHOSE",
+					"item": [
+						{
+							"name": "WAREHOUSE GOOD INPUT",
+							"item": [
+								{
+									"name": "GET WORD - LONG DICTIONARY SERVICE - GOOD INPUT",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(`get vocabulary should return 200 and has proper values`, function(){\r",
+													"    pm.response.to.have.status(200);\r",
+													"    pm.expect(pm.environment.get(\"word\")).to.equal(pm.response.json.word);\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "dictionary",
+												"value": "{{dictionary}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:8082/api/vocabulary/{{word}}",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8082",
+											"path": [
+												"api",
+												"vocabulary",
+												"{{word}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "WAREHOUSE BAD INPUT",
+							"item": [
+								{
+									"name": "GET WORD - LONG DICTIONARY SERVICE - BAD INPUT",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(`get non-vocabulary should return 404 or 400`, function(){\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([400,404])\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "dictionary",
+												"value": "{{dictionary}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:8082/api/vocabulary/{{word}}",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8082",
+											"path": [
+												"api",
+												"vocabulary",
+												"{{word}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "dictionary",
+			"value": "CAMBRIDGE"
+		}
+	]
+}
